@@ -1,0 +1,36 @@
+<idea-plugin>
+    <id>dev.sebastiano.plugins.copyforkeynote</id>
+    <name>Copy for Keynote</name>
+    <vendor url="https://sebastiano.dev">Sebastiano Poggi</vendor>
+
+    <description><![CDATA[
+        Copies text in a format that can be more easily pasted into Keynote.
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <resource-bundle>messages.CopyForKeynoteBundle</resource-bundle>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <notificationGroup id="dev.sebastiano.plugins.copyforkeynote" displayType="BALLOON"
+                           key="notification.group.copy.for.keynote"/>
+
+        <applicationConfigurable
+                parentId="tools"
+                instance="dev.sebastiano.plugins.copyforkeynote.settings.CopyForKeynoteConfigurable"
+                id="dev.sebastiano.plugins.copyforkeynote.settings.CopyForKeynoteConfigurable"
+                key="configuration.title"/>
+    </extensions>
+
+    <actions>
+        <action id="dev.sebastiano.plugins.copyforkeynote.CopyForKeynoteAction"
+                class="dev.sebastiano.plugins.copyforkeynote.CopyForKeynoteAction">
+
+            <add-to-group group-id="Copy.Paste.Special" anchor="after" relative-to-action="CopyReference"/>
+
+            <keyboard-shortcut
+                    keymap="$default"
+                    first-keystroke="control alt shift K"/>
+        </action>
+    </actions>
+</idea-plugin>
